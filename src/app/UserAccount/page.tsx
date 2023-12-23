@@ -1,7 +1,7 @@
 "use client";
+import Navbar from "../components/Navbar";
 import "./User.css";
 import { useEffect } from "react";
-import Navbar from "../components/Navbar";
 
 export default function User() {
   {
@@ -38,9 +38,10 @@ export default function User() {
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
       />
       <title>User Account</title>
+
       <body className="user-container">
         <Navbar />
-
+        <br />
         <div className="container" id="container">
           <div className="form-container sign-up">
             <form>
@@ -96,7 +97,7 @@ export default function User() {
                 <h1>Welcome Back!</h1>
                 <p>Hello Old Timer! we welcome you back</p>
                 <p>Just click bellow to go to the login form</p>
-                <button className="hidden" id="login">
+                <button className="hiddeen" id="login">
                   Sign In
                 </button>
               </div>
@@ -108,7 +109,7 @@ export default function User() {
                 </p>
                 <br />
                 <p>Just click bellow to go to the registration form</p>
-                <button className="hidden" id="register">
+                <button className="hiddeen" id="register">
                   Sign Up
                 </button>
               </div>
