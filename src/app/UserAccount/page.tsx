@@ -39,12 +39,14 @@ export default function User() {
       />
       <title>User Account</title>
 
-      <body className="user-container">
-        <Navbar />
+      <Navbar />
+
+      <section className="user-container">
         <br />
         <div className="container" id="container">
           <div className="form-container sign-up">
             <form>
+              {/*This From is for creating a new account */}
               <h1>Create Account</h1>
               <div className="social-icons">
                 <a href="#" className="icon">
@@ -67,8 +69,10 @@ export default function User() {
               <button>Sign Up</button>
             </form>
           </div>
+
           <div className="form-container sign-in">
             <form>
+              {/*This From is for login to an existing account */}
               <h1>Sign In</h1>
               <div className="social-icons">
                 <a href="#" className="icon">
@@ -91,13 +95,14 @@ export default function User() {
               <button>Sign In</button>
             </form>
           </div>
+
           <div className="toggle-container">
             <div className="toggle">
               <div className="toggle-panel toggle-left">
                 <h1>Welcome Back!</h1>
                 <p>Hello Old Timer! we welcome you back</p>
                 <p>Just click bellow to go to the login form</p>
-                <button className="hiddeen" id="login">
+                <button className="dont_show" id="login">
                   Sign In
                 </button>
               </div>
@@ -109,14 +114,14 @@ export default function User() {
                 </p>
                 <br />
                 <p>Just click bellow to go to the registration form</p>
-                <button className="hiddeen" id="register">
+                <button className="dont_show" id="register">
                   Sign Up
                 </button>
               </div>
             </div>
           </div>
         </div>
-      </body>
+      </section>
     </>
   );
 }

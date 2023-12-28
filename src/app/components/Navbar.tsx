@@ -1,9 +1,14 @@
+import Image from "next/image";
 import Link from "next/link";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-regular-svg-icons";
 
 export default function Navbar() {
   return (
-    <div className="navbar bg-base-100">
+    <section className="navbar">
       <div className="flex-1">
+        <Image src={"/Logo.png"} width={60} height={60} alt="Lawyer House" />
         <Link href={"/"} className="btn btn-ghost text-xl">
           Lawyer House
         </Link>
@@ -15,27 +20,24 @@ export default function Navbar() {
             role="button"
             className="btn btn-ghost btn-circle avatar">
             <div className="w-8">
-              <img
-                alt="Tailwind CSS Navbar component"
-                src="/user-regular.svg"
-              />
+              <FontAwesomeIcon icon={faUser} size="2xl" />
             </div>
           </div>
           <ul
             tabIndex={0}
             className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
             <li>
-              <Link href={"/UserAccount"}>Profile</Link>
+              <a>Profile</a>
             </li>
             <li>
               <a>Settings</a>
             </li>
             <li>
-              <a>Logout</a>
+              <Link href={"/UserAccount"}>Logout</Link>
             </li>
           </ul>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
