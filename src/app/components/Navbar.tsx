@@ -8,8 +8,8 @@ export default function Navbar() {
   return (
     <section className="navbar">
       <div className="flex-1">
-        <Image src={"/Logo.png"} width={60} height={60} alt="Lawyer House" />
         <Link href={"/"} className="btn btn-ghost text-xl">
+          <Image src={"/Logo.png"} width={60} height={60} alt="Lawyer House" />
           Lawyer House
         </Link>
       </div>
