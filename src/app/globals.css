@@ -7,3 +7,11 @@
   box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
 }
+.menu-links {
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+.menu-links.open {
+  transform: translateX(0);
+}
