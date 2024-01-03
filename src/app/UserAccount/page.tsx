@@ -2,7 +2,7 @@ import Navbar from "../components/Navbar";
 import "./User.css";
 import { useEffect } from "react";
 
-// Importing Icons {Using React-icons}
+// Importing Icons {Using React}
 import { FaFacebook } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";

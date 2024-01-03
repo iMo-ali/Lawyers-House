@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta charSet="UTF-8" />
-        <title>Hello World!</title>
+        <title>Lawyer's House</title>
       </head>
       <body className={inter.className}>
         {children}

@@ -16,3 +16,9 @@
   @apply bg-[#c9d6ff] flex items-center justify-center h-screen;
   background: linear-gradient(to right, #e2e2e2, #8162ff);
 }
+.doc-container {
+  @apply bg-[#c9d6ff] flex h-screen flex-col items-center justify-center;
+}
+.Selection {
+  @apply flex flex-row gap-5;
+}
