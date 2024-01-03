@@ -1,26 +1,18 @@
 @tailwind components;
 @tailwind utilities;
+@tailwind base;
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  @apply box-border m-0 p-0;
   font-family: "Montserrat", sans-serif;
 }
 .menu-links {
-  transform: translateX(-100%);
-  transition: transform 0.3s ease;
+  @apply -translate-x-full transition-transform duration-[0.3s] ease-[ease];
 }
-
 .menu-links.open {
-  transform: translateX(0);
+  @apply translate-x-0;
 }
-
 .dashboard-container {
-  background-color: #c9d6ff;
-  background: linear-gradient(to right, #e2e2e2, #c9d6ff);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
+  @apply bg-[#c9d6ff] flex items-center justify-center h-screen;
+  background: linear-gradient(to right, #e2e2e2, #8162ff);
 }

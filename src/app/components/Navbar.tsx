@@ -8,12 +8,15 @@ import { useState } from "react";
 
 export default function Navbar() {
   return (
-    <section className="fixed top-0 navbar bg-gray-200 ">
+    <section className="fixed top-0 navbar bg-gradient-to-r from-[#e2e2e2] to-[#8162ff]">
       <div className="dropdown flex-none">
         {/* We are using daisyui so taking advantage of the "Dropdown" class we can make a very neat dropdown menu */}
-        <div tabIndex={0} role="button" className="btn m-1">
+        <button
+          tabIndex={0}
+          role="button"
+          className="btn hover:bg-[#e56f8c] py-2.5 rounded-lg border-solid border-transparent">
           <FaBars size="29" />
-        </div>
+        </button>
         <ul
           tabIndex={0}
           className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 bg-gray-400 z-50">
@@ -70,37 +73,47 @@ export default function Navbar() {
         </ul>
       </div>
 
-      <div className="flex-1">
-        <Link href={"/"} className="btn btn-ghost text-xl">
+      <div className="flex-1 text-[#e56f8c] capitalize tracking-normal text-4xl font-black">
+        <Link href={"/"} className="flex items-center btn-ghost text-xl">
           <Image src={"/Logo.png"} width={60} height={60} alt="Lawyer House" />
-          Lawyer's House
+          lawyer's house
         </Link>
       </div>
 
-      <div className="flex-none gap-2">
-        <div className="dropdown dropdown-end">
-          <div
-            tabIndex={0}
-            role="button"
-            className="btn btn-ghost btn-circle avatar">
-            <div className="w-8">
-              <FaRegUser size="2xl" />
-            </div>
-          </div>
-          <ul
-            tabIndex={0}
-            className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52 bg-gray-400">
-            <li>
-              <a>Profile</a>
-            </li>
-            <li>
-              <a>Settings</a>
-            </li>
-            <li>
-              <Link href={"/UserAccount"}>Logout</Link>
-            </li>
-          </ul>
+      <div className="dropdown dropdown-end flex-none">
+        {/* We are using daisyui so taking advantage of the "Dropdown" class we can make a very neat dropdown menu */}
+        <div
+          tabIndex={0}
+          role="button"
+          className="btn hover:bg-[#e56f8c] py-2.5 rounded-lg border-solid border-transparent">
+          <FaRegUser size="29" />
         </div>
+        <ul
+          tabIndex={0}
+          className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 bg-gray-400 z-50">
+          <li>
+            <Link
+              href="/home"
+              className="block py-2 px-4 text-gray-800 rounded hover:bg-blue-500 hover:text-white">
+              Profile
+            </Link>
+            {/* Link can take a className directly dont use <a> tag */}
+          </li>
+          <li>
+            <Link
+              href="/home"
+              className="block py-2 px-4 text-gray-800 rounded hover:bg-blue-500 hover:text-white">
+              Settings
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/UserAccount"
+              className="block py-2 px-4 text-gray-800 rounded hover:bg-blue-500 hover:text-white">
+              Logout
+            </Link>
+          </li>
+        </ul>
       </div>
     </section>
   );
