@@ -13,7 +13,7 @@
   @apply translate-x-0;
 }
 .dashboard-container {
-  @apply bg-[#c9d6ff] flex items-center justify-center h-screen;
+  @apply bg-[#c9d6ff] flex items-center justify-center h-screen text-black;
   background: linear-gradient(to right, #e2e2e2, #8162ff);
 }
 .doc-container {
