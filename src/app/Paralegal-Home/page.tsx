@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import LinePlot from "../components/LinePlot";
-import LongestCasesTable from "../components/LongestCase";
 import Calendar from "../components/Calendar";
 
 export default function Home() {

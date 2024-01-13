@@ -1,8 +1,60 @@
-import React from "react";
-import Calendar from "react-calendar";
+// components/Calendar.tsx
+import React, { useState } from 'react';
 
-const MyCalendar = () => {
-  return <Calendar /* Calendar props */ />;
+const Calendar = () => {
+  const [currentDate, setCurrentDate] = useState(new Date());
+
+  const getDaysInMonth = (date: Date) => {
+    const month = date.getMonth();
+    const year = date.getFullYear();
+    return new Date(year, month + 1, 0).getDate();
+  };
+
+  const addMonths = (date: string | number | Date, months: number) => {
+    let newDate = new Date(date);
+    newDate.setMonth(newDate.getMonth() + months);
+    return newDate;
+  };
+
+  const nextMonth = () => {
+    setCurrentDate(addMonths(currentDate, 1));
+  };
+
+  const prevMonth = () => {
+    setCurrentDate(addMonths(currentDate, -1));
+  };
+
+  const getMonthDays = () => {
+    const daysInMonth = getDaysInMonth(currentDate);
+    let days = [];
+    for (let i = 1; i <= daysInMonth; i++) {
+      days.push(new Date(currentDate.getFullYear(), currentDate.getMonth(), i));
+    }
+    return days;
+  };
+
+  const formatDate = (date: Date, formatStr: string) => {
+    const day = date.getDate().toString();
+    const month = date.toLocaleString('default', { month: 'long' });
+    const year = date.getFullYear().toString();
+    return formatStr.replace('MMMM', month).replace('yyyy', year).replace('d', day);
+  };
+  
+
+  const days = getMonthDays();
+
+  return (
+    <div>
+      <button onClick={prevMonth}>&lt;</button>
+      <span>{formatDate(currentDate, 'MMMM yyyy')}</span>
+      <button onClick={nextMonth}>&gt;</button>
+      <div className="grid grid-cols-7">
+        {days.map((day) => (
+          <div key={day.toISOString()}>{formatDate(day, 'd')}</div>
+        ))}
+      </div>
+    </div>
+  );
 };
 
-export default MyCalendar;
+export default Calendar;
