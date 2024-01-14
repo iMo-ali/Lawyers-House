@@ -1,17 +1,41 @@
-// components/TaskView.tsx
-import React from 'react';
+import React, { useState } from 'react';
+import './Taskview.css';
 
-// Define an interface for the component's props
 interface TaskViewProps {
-  selectedDay: string; // Assuming selectedDay is a string
+  selectedDay: string;
+  tasks: { date: string; description: string }[];
+  addTask: (description: string) => void;
+  removeTask: (task: { date: string; description: string }) => void;
 }
 
-const TaskView: React.FC<TaskViewProps> = ({ selectedDay }) => {
-  // Placeholder for task list and add/edit functionality
+const TaskView: React.FC<TaskViewProps> = ({ selectedDay, tasks, addTask, removeTask }) => {
+  const [newTaskDescription, setNewTaskDescription] = useState('');
+
+  const handleAddTask = () => {
+    addTask(newTaskDescription);
+    setNewTaskDescription(''); // Reset input after adding
+  };
+
   return (
     <div>
       <h2>Tasks for {selectedDay}</h2>
-      {/* Task list and management functionality will go here */}
+      <ul>
+        {tasks.map((task, index) => (
+          <li key={index}>
+            {task.description}
+            <button onClick={() => removeTask(task)}>Remove</button>
+          </li>
+        ))}
+      </ul>
+      <div>
+        <input
+          type="text"
+          value={newTaskDescription}
+          onChange={(e) => setNewTaskDescription(e.target.value)}
+          placeholder="New Task Description"
+        />
+        <button onClick={handleAddTask}>Add Task</button>
+      </div>
     </div>
   );
 };

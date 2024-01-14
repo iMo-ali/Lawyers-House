@@ -1,0 +1,60 @@
+/* TaskView.css */
+.task-view-wrapper h2 {
+  color: #333;
+  margin-bottom: 15px;
+  text-align: center;
+  animation: fadeIn 0.5s;
+}
+
+.task-view-wrapper ul {
+  list-style: none;
+  padding: 0;
+}
+
+.task-view-wrapper li {
+  background-color: #f7f7f7;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  animation: slideIn 0.5s ease-out;
+}
+
+.task-view-wrapper button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.task-view-wrapper button:hover {
+  background-color: #ab1292;
+}
+
+.task-input-container {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.task-input-container input {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #000000;
+  border-radius: 5px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-100px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}

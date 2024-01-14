@@ -1,0 +1,23 @@
+/* CalendarWithTasks.css */
+.calendar-tasks-container {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  gap: 20px;
+  padding: 20px;
+}
+
+.calendar-wrapper, .task-view-wrapper {
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(48, 4, 161, 0.1);
+  background-color: rgba(255, 255, 255, 0.626);
+  padding: 20px;
+}
+
+.calendar-wrapper {
+  flex: 1;
+}
+
+.task-view-wrapper {
+  flex: 2;
+}
