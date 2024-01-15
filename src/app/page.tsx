@@ -13,8 +13,8 @@ export default function Home() {
           <h3 className="font-mono text-back text-5xl">
             A Website that{" "}
             <strong className="bg-blue-400 text-white">Automate</strong>{" "}
-            everything about your Law
-            <strong className="bg-yellow-400"> Needs!</strong>
+            everything about your Law{" "}
+            <strong className="bg-yellow-400">Needs!</strong>
           </h3>
           <div className="font-mono text-5xl flex space-x-3 ">
             <h4> Automate </h4>

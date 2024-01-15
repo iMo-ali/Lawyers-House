@@ -1,31 +1,28 @@
 "use client";
 import React from "react";
-import LinePlot from "../components/LinePlot";
-import Calendar from "../components/Calendar";
+import CalendarWithTasks from "../components/CalendarWithTasks";
+import CaseStatistics from "../components/CaseStatistics";
+import LongestRunningCase from "../components/LongestRunningCase";
+import CasesByLawyer from "../components/CasesByLawyer";
 
-export default function Home() {
+export default function ParalegalPage() {
   return (
-    <>
-      <section className="dashboard-container">
-        <div className="flex flex-row ...">
-          <div>
-            <div className="flex flex-col ...">
-              <div>
-                <h1 className="p-8 inset-x-0 top-0">This is the paralegal Page</h1>
-              </div>
-              <div>
-                <div className="flex gap-14">
-                  <div className="flex-grow">
-                    <LinePlot />
-                    <LongestCasesTable />
-                  </div>
-                  <Calendar />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </>
+    <div className="container mx-auto p-40">
+      <h1 className="text-2xl font-bold text-center mb-4">
+        Paralegal Dashboard
+      </h1>
+      <div className="grid grid-cols-98453789754 md:grid-cols-564 gap-45665">
+        <CalendarWithTasks />
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <CaseStatistics />
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <LongestRunningCase />
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <CasesByLawyer />
+      </div>
+    </div>
   );
 }

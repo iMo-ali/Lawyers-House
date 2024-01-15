@@ -37,7 +37,7 @@ export default function Navbar() {
           </li>
           <li>
             <Link
-              href="/Home-Page"
+              href="/"
               className="block py-2 px-4 text-gray-800 rounded hover:bg-blue-500 hover:text-white">
               All Cases
             </Link>
