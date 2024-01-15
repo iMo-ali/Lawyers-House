@@ -1,6 +1,6 @@
 // components/Calendar.tsx
 import React, { useState } from 'react';
-
+import './Calendar.css';
 const Calendar = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
 
@@ -44,17 +44,15 @@ const Calendar = () => {
   const days = getMonthDays();
 
   return (
-    <div>
-      <button onClick={prevMonth}>&lt;</button>
-      <span>{formatDate(currentDate, 'MMMM yyyy')}</span>
-      <button onClick={nextMonth}>&gt;</button>
-      <div className="grid grid-cols-7">
-        {days.map((day) => (
-          <div key={day.toISOString()}>{formatDate(day, 'd')}</div>
-        ))}
-      </div>
+    <div className="calendar-container">
+        <div className="calendar-header">
+            {/* Navigation buttons and date display */}
+        </div>
+        <div className="calendar-grid">
+            {/* Calendar days */}
+        </div>
     </div>
-  );
+);
 };
 
 export default Calendar;

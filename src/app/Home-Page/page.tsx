@@ -14,16 +14,12 @@ const HomePage = () => {
 
 
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+    
       <CaseStatistics />
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+
       <LongestRunningCase />
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
       <CasesByLawyer />
       </div>
-    </div>
   );
 };
 

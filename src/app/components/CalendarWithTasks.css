@@ -1,23 +1,59 @@
-/* CalendarWithTasks.css */
-.calendar-tasks-container {
-  display: flex;
-  justify-content: center;
-  align-items: start;
-  gap: 20px;
-  padding: 20px;
-}
-
-.calendar-wrapper, .task-view-wrapper {
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(48, 4, 161, 0.1);
-  background-color: rgba(255, 255, 255, 0.626);
-  padding: 20px;
+/* Minimalist Styles */
+.calendar-container {
+  color: #333;
+  background-color: #fafafa;
 }
 
 .calendar-wrapper {
-  flex: 1;
+  background-color: #fff;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
 }
 
 .task-view-wrapper {
-  flex: 2;
+  background-color: #fff;
+  border-left: 1px solid #eee;
+}
+
+.close-panel-btn {
+  background-color: #bbb;
+  color: #333;
+}
+
+.calendar-day {
+  background-color: #fff;
+  color: #333;
+}
+
+.calendar-day-today {
+  background-color: #ddd;
+}
+/* Animated Transitions */
+.task-view-wrapper {
+  transform: translateX(0);
+  transition: transform 0.5s ease;
+}
+
+.task-view-wrapper.closed {
+  transform: translateX(100%);
+}
+
+.calendar-container {
+  transition: all 0.3s ease;
+}
+
+.calendar-container:hover {
+  transform: scale(1.02);
+}
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .calendar-container {
+    flex-direction: column;
+  }
+
+  .task-view-wrapper {
+    width: 100%;
+    border-left: none;
+    border-top: 1px solid #ddd;
+  }
 }
