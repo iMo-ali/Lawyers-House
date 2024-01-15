@@ -4,7 +4,7 @@ import CalendarWithTasks from "../components/CalendarWithTasks";
 import CaseStatistics from "../components/CaseStatistics";
 import LongestRunningCase from "../components/LongestRunningCase";
 import CasesByLawyer from "../components/CasesByLawyer";
-import Navbar from "../components/Navbar(Partner)";
+import Navbar from "./components/Navbar(Partner)";
 
 export default function ParalegalPage() {
   return (

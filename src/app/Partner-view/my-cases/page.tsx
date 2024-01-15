@@ -1,10 +1,10 @@
-import Navbar from "@/app/components/Navbar(Partner)";
+import Navbar from "@/app/Partner-view/components/Navbar(Partner)";
 import React from "react";
 
 export default function MyCase() {
   return (
     <>
-    <section>
+      <section>
         <Navbar />
       </section>
       <section className="dashboard-container">
