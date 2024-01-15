@@ -22,7 +22,7 @@ export default function Navbar() {
           className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 bg-gray-400 z-50">
           <li>
             <Link
-              href="/"
+              href="/Partner-view"
               className="block py-2 px-4 text-gray-800 rounded hover:bg-blue-500 hover:text-white">
               Home Page
             </Link>
@@ -51,14 +51,14 @@ export default function Navbar() {
           </li>
           <li>
             <Link
-              href="/home"
+              href="/Partner-view/all-secretaries"
               className="block py-2 px-4 text-gray-800 rounded hover:bg-blue-500 hover:text-white">
               Secretary Page
             </Link>
           </li>
           <li>
             <Link
-              href="/home"
+              href="/Partner-view/all-clients"
               className="block py-2 px-4 text-gray-800 rounded hover:bg-blue-500 hover:text-white">
               Client Page
             </Link>

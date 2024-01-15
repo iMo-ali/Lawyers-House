@@ -1,8 +1,12 @@
+import Navbar from "@/app/components/Navbar(Partner)";
 import React from "react";
 
 export default function MyCase() {
   return (
     <>
+      <section>
+        <Navbar />
+      </section>
       <section className="dashboard-container">
         <div className="overflow-x-auto px-9">
           <table className="table bg-white text-black">
