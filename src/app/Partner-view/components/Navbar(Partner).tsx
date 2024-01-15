@@ -74,7 +74,9 @@ export default function Navbar() {
       </div>
 
       <div className="flex-1 text-[#e56f8c] capitalize tracking-normal text-4xl font-black">
-        <Link href={"/"} className="flex items-center btn-ghost text-xl">
+        <Link
+          href={"/Partner-view"}
+          className="flex items-center btn-ghost text-xl">
           <Image src={"/Logo.png"} width={60} height={60} alt="Lawyer House" />
           lawyer's house
         </Link>

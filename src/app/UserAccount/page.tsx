@@ -1,6 +1,5 @@
-import Navbar from "../Partner-view/components/Navbar(Partner)";
 import "./User.css";
-import { useEffect } from "react";
+import Navbar from "../components/Navbar(ONLYTEST)";
 
 // Importing Icons {Using React}
 import { FaFacebook } from "react-icons/fa";
@@ -11,6 +10,9 @@ import { IoLogoGoogleplus } from "react-icons/io";
 export default function User() {
   return (
     <>
+      <section>
+        <Navbar />
+      </section>
       <section className="user-container">
         <br />
         <div className="container" id="container">
