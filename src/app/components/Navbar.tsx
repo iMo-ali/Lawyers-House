@@ -30,21 +30,21 @@ export default function Navbar() {
           </li>
           <li>
             <Link
-              href="/my-cases"
+              href="/Partner-view/my-cases"
               className="block py-2 px-4 text-gray-800 rounded hover:bg-blue-500 hover:text-white">
               My Cases
             </Link>
           </li>
           <li>
             <Link
-              href="/all-cases"
+              href="/Partner-view/all-cases"
               className="block py-2 px-4 text-gray-800 rounded hover:bg-blue-500 hover:text-white">
               All Cases
             </Link>
           </li>
           <li>
             <Link
-              href="/all-lawyers"
+              href="/Partner-view/all-lawyers"
               className="block py-2 px-4 text-gray-800 rounded hover:bg-blue-500 hover:text-white">
               Lawyers Page
             </Link>
@@ -65,7 +65,7 @@ export default function Navbar() {
           </li>
           <li>
             <Link
-              href="/doc-gen"
+              href="/Partner-view/doc-gen"
               className="block py-2 px-4 text-gray-800 rounded hover:bg-blue-500 hover:text-white">
               Document Creation Page
             </Link>

@@ -5,6 +5,7 @@
 export default async function Home() {
   const response = await fetch("http://localhost:8000/all-lawyers");
   const data = await response.json();
+  console.log(data);
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       {data.map((lawyer: { title: string; body: string; id: string }) => (
