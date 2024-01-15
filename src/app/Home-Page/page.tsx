@@ -4,7 +4,6 @@ import CalendarWithTasks from '../components/CalendarWithTasks';
 import CaseStatistics from '../components/CaseStatistics';
 import LongestRunningCase from '../components/LongestRunningCase';
 import CasesByLawyer from '../components/CasesByLawyer';
-
 const HomePage = () => {
   return (
     <div className="container mx-auto p-40">
