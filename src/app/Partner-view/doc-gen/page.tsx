@@ -1,8 +1,12 @@
+import Navbar from "@/app/Partner-view/components/Navbar(Partner)";
 import React from "react";
 
 export default function documentgeneration() {
   return (
     <>
+      <section>
+        <Navbar />
+      </section>
       <section className="doc-container">
         <h1 className="text-black">Create An Automated Document</h1>
 

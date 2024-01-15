@@ -28,27 +28,15 @@ export default function Navbar() {
             </Link>
             {/* Link can take a className directly dont use <a> tag */}
           </li>
+
           <li>
             <Link
-              href="/my-cases"
+              href="/Partner-view/my-cases"
               className="block py-2 px-4 text-gray-800 rounded hover:bg-blue-500 hover:text-white">
               My Cases
             </Link>
           </li>
-          <li>
-            <Link
-              href="/all-cases"
-              className="block py-2 px-4 text-gray-800 rounded hover:bg-blue-500 hover:text-white">
-              All Cases
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/all-lawyers"
-              className="block py-2 px-4 text-gray-800 rounded hover:bg-blue-500 hover:text-white">
-              Lawyers Page
-            </Link>
-          </li>
+
           <li>
             <Link
               href="/home"
@@ -56,16 +44,10 @@ export default function Navbar() {
               Secretary Page
             </Link>
           </li>
+
           <li>
             <Link
-              href="/home"
-              className="block py-2 px-4 text-gray-800 rounded hover:bg-blue-500 hover:text-white">
-              Client Page
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/doc-gen"
+              href="/Partner-view/doc-gen"
               className="block py-2 px-4 text-gray-800 rounded hover:bg-blue-500 hover:text-white">
               Document Creation Page
             </Link>

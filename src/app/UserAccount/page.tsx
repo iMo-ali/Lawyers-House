@@ -1,4 +1,4 @@
-import Navbar from "../components/Navbar";
+import Navbar from "../Partner-view/components/Navbar(Partner)";
 import "./User.css";
 import { useEffect } from "react";
 
