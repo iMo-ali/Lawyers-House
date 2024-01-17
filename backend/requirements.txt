@@ -1,0 +1,11 @@
+fastapi
+pydantic[email]
+uvicorn[standard]
+python-multipart
+python-jose[cryptography]
+passlib[bcrypt]
+numpy
+pymupdf
+SQLAlchemy
+Pillow
+psycopg2

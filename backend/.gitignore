@@ -1,0 +1,5 @@
+venv/
+plan.txt
+*.ipynb
+__pycache__
+.ipynb_checkpoints
