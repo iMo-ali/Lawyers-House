@@ -1,10 +1,43 @@
+"use client";
 import Navbar from "../components/Navbar(ONLYTEST)";
 import Image from "next/image";
-
-// Importing Icons {Using React}
+import Link from "next/link";
 import { IoLogoGoogleplus } from "react-icons/io";
 
 export default function User() {
+  const handleLogin = async (event: {
+    preventDefault: () => void;
+    target: { username: { value: any }; password: { value: any } };
+  }) => {
+    event.preventDefault();
+    const response = await fetch("http://localhost:8000/auth/token", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: new URLSearchParams({
+        username: event.target.username.value,
+        password: event.target.password.value,
+      }),
+    });
+
+    if (response.ok) {
+      const userData = await response.json();
+
+      if (userData.is_lawyer) {
+        if (userData.is_partner) {
+          console.log("Redirecting to /partner-page");
+          window.location.href = "/Partner-view";
+        } else {
+          console.log("Redirecting to /lawyer-page");
+          window.location.href = "/Paralegal-view";
+        }
+      } else {
+        window.location.href = "/user-page";
+      }
+    }
+  };
+
   return (
     <>
       <section>
@@ -16,8 +49,7 @@ export default function User() {
             <h2 className="text-2xl font-bold text-[#002D74]">Login</h2>
             <form
               className="mt-6"
-              action="http://localhost:8000/auth/token"
-              method="POST"
+              onSubmit={handleLogin}
               encType="application/x-www-form-urlencoded">
               <div>
                 <label className="block text-gray-700">Email Address</label>
