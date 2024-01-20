@@ -9,8 +9,11 @@ app = FastAPI()
 app.include_router(laywer.router)
 app.include_router(staff_router)
 app.include_router(clients_router)
+app.include_router(auth_router.router)
 # IMPORTANT for REACT app at port 3000
-origins=["http://localhost:3000"]
+origins=["http://localhost:3000",
+         "localhost:3000",
+         "http://0.0.0.0:3000"]
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
@@ -19,7 +22,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 # app.include_router(api.router)
-app.include_router(auth_router.router)
 @app.get("/")
 def service_check():
     return Response("Service is running.")

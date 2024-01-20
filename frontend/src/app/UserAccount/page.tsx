@@ -17,12 +17,13 @@ export default function User() {
             <form
               className="mt-6"
               action="http://localhost:8000/auth/token"
-              method="POST">
+              method="POST"
+              encType="application/x-www-form-urlencoded">
               <div>
                 <label className="block text-gray-700">Email Address</label>
                 <input
                   type="email"
-                  name=""
+                  name="username"
                   id=""
                   placeholder="Enter Email Address"
                   className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
@@ -35,10 +36,10 @@ export default function User() {
                 <label className="block text-gray-700">Password</label>
                 <input
                   type="password"
-                  name=""
+                  name="password"
                   id=""
                   placeholder="Enter Password"
-                  minLength={6}
+                  minLength={1}
                   className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
                   focus:bg-white focus:outline-none"
                   required
