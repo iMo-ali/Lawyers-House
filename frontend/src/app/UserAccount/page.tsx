@@ -1,7 +1,6 @@
 "use client";
-import Navbar from "../components/Navbar(ONLYTEST)";
+import Navbar from "../components/Navbar";
 import Image from "next/image";
-import Link from "next/link";
 import { IoLogoGoogleplus } from "react-icons/io";
 
 export default function User() {

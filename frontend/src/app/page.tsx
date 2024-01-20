@@ -1,12 +1,14 @@
 "use client";
 import Typical from "react-typical";
-import Navbar from "./components/Navbar(ONLYTEST)";
+import Navbar from "./components/Navbar";
 
 export default function Home() {
   return (
-    <><section>
-      <Navbar />
-    </section><div className="flex flex-col items-start justify-center min-h-screen py-2">
+    <>
+      <section>
+        <Navbar />
+      </section>
+      <div className="flex flex-col items-start justify-center min-h-screen py-2">
         <main className="px-8">
           {/* Header */}
           <div className="flex flex-col space-y-8 items-start justify-start">
@@ -34,7 +36,8 @@ export default function Home() {
                     1020,
                   ]}
                   wrapper="p"
-                  loop={Infinity} />
+                  loop={Infinity}
+                />
               </strong>
             </div>
           </div>
@@ -43,6 +46,7 @@ export default function Home() {
             <a href="/UserAccount">Join Us Now!</a>
           </button>
         </main>
-      </div></>
+      </div>
+    </>
   );
 }
