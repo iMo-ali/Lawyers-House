@@ -5,5 +5,5 @@ class FClient(BaseModel):
     fname: str
     lname:str
     email:str
-    password:str
     date_registered:datetime
+

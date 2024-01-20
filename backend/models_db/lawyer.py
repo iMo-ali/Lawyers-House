@@ -1,5 +1,5 @@
 from db.core import Base, engine
-from sqlalchemy import  select, Enum, insert
+from sqlalchemy import  select, Enum, insert, update
 from sqlalchemy.orm import Mapped, mapped_column, Session
 import enum
 from datetime import datetime
@@ -51,4 +51,16 @@ def insert_lawyer(db:Session, fname:str, lname:str, email:str, password:str, law
         db.commit()
         return True
     except Exception as e:
+        return False
+
+def update_lawyer_status(db:Session, id:int ,staff_status:STAFF_STATUS):
+    try:
+        lawyer = db.execute(select(Lawyer).where(Lawyer.id == id)).scalar()
+        if not lawyer:
+            return False
+        db.execute(update(Lawyer).where(Lawyer.id ==id).values(status = staff_status))
+        db.commit()
+        return True
+    except Exception as e:
+        print(e)
         return False

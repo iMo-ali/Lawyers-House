@@ -3,8 +3,12 @@ from fastapi import FastAPI, Response
 from fastapi.middleware.cors import CORSMiddleware
 from auth import router as auth_router
 from routers import laywer
+from routers.staff import staff_router
+from routers.client import clients_router
 app = FastAPI()
 app.include_router(laywer.router)
+app.include_router(staff_router)
+app.include_router(clients_router)
 # IMPORTANT for REACT app at port 3000
 origins=["http://localhost:3000"]
 app.add_middleware(

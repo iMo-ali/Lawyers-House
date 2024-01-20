@@ -1,7 +1,10 @@
 from fastapi import APIRouter, Depends, HTTPException,status, Form
 from auth.router import get_current_user
 from models_flask.lawyer import FLawyer
-from models_db.lawyer import Lawyer, is_valid_partner, select_all_lawyers, select_lawyer_by_id, select_lawyer_by_email, STAFF_STATUS, Lawyer_Type, insert_lawyer
+from models_db.lawyer import (Lawyer, is_valid_partner, select_all_lawyers,
+                               select_lawyer_by_id, select_lawyer_by_email, 
+                               STAFF_STATUS, Lawyer_Type, insert_lawyer, 
+                               update_lawyer_status)
 from models_db.client import Client
 from models_db.secretary import Secretary
 from typing import Annotated, Union
@@ -34,14 +37,23 @@ async def post_lawyer(fname:Annotated[str, Form()], lname:Annotated[str, Form()]
     inserted = insert_lawyer(db, fname, lname, email, password, lawyer_type, staff_status)
     if not inserted:
         raise HTTPException(status.HTTP_406_NOT_ACCEPTABLE, "The email is already taken")
+    return True
     
-@router.get("/add", tags=["lawyers"])
+@router.get("/lawyer_types", tags=["lawyers"])
 async def get_lawyer_types(user:Annotated[Union[Lawyer,Client, Secretary], Depends(get_current_user)], db: Annotated[Session, Depends(get_db)]):
     if not is_valid_partner(db, user.email):
         raise nonpartner_access_exception
     return {"lawyer_types": [t.value for t in Lawyer_Type]}
 
-
+@router.put("/change-status", tags=["lawyers"])
+def change_lawyer_status(id: Annotated[int, Form()], user:Annotated[Union[Lawyer, Client, Secretary], Depends(get_current_user)], staff_status:Annotated[STAFF_STATUS, Form()], db:Annotated[Session, Depends(get_db)]):
+    # only partners change the lawyers statuses
+    if not is_valid_partner(db, user.email):
+        raise nonpartner_access_exception
+    if update_lawyer_status(db, id, staff_status):
+        return True
+    else:
+        return False
 @router.get("/{lawyer_id}", tags=["lawyers"])
 async def get_lawyer_by_id(lawyer_id:int, user:Annotated[Union[Lawyer,Client, Secretary], Depends(get_current_user)], db:Annotated[Session, Depends(get_db)]):
     # allow lawyers to view each other

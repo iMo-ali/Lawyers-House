@@ -1,13 +1,13 @@
 from fastapi import Response, APIRouter, Depends, HTTPException, status, Form
 from fastapi.security import  APIKeyCookie
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timedelta, timezone, tzinfo
 from typing import Annotated, Union
 import os
 from jose import JWTError, jwt
 from pydantic import EmailStr
 from db.core import get_db
 import utils 
-# from auth.security import verify_password, get_password_hash, Token, TokenData
+from auth.security import verify_password, get_password_hash, Token, TokenData
 from auth.config import *
 from sqlalchemy.orm import Session
 from sqlalchemy import select
@@ -59,20 +59,29 @@ router = APIRouter(prefix="/auth", tags=["auth"])
 #         return UserInDB(username=info[0], hashed_password=info[1])
 #     else:
 #         return None
-    
+credentials_exception = HTTPException(
+        status_code=status.HTTP_401_UNAUTHORIZED,
+        detail="Could not validate credentials",
+    )  
+session_expired_exception = HTTPException(
+        status_code=status.HTTP_401_UNAUTHORIZED,
+        detail="Session is expired, please login again",
+    )  
 def create_access_token(data: dict):
     to_encode = data.copy()
     encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
     return encoded_jwt
 
 
-async def get_current_user(token: Annotated[str, Depends(cookie_scheme)], db: Annotated[Session, Depends(get_db)]):
-    credentials_exception = HTTPException(
-        status_code=status.HTTP_401_UNAUTHORIZED,
-        detail="Could not validate credentials",
-    )
+async def get_current_user(token: Annotated[str, Depends(cookie_scheme)], db: Annotated[Session, Depends(get_db)], response:Response):
+    
     try:
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        exp_time = datetime.fromtimestamp(payload.get("exp"))
+        if datetime.now() > exp_time: # session expired
+            response.delete_cookie(COOKIE_NAME)
+            raise session_expired_exception
+        
         username: str = payload.get("sub")
         if username is None:
             raise credentials_exception
@@ -94,7 +103,8 @@ def authenticate_user(db:Session, username, password):
     user = db.execute(select(user_class).where(user_class.email == username)).scalar()
     if not user:
         return False
-    if not user.password == password:
+    print(password, user.password, password == user.password, sep='\n')
+    if password != user.password:
         return False
     return user
 @router.post("/token")
@@ -115,13 +125,13 @@ async def login_for_access_token(
     data= {
            "sub": user.email,
            "is_lawyer":isinstance(user, Lawyer),
-           "is_partner":is_partner
+           "is_partner":is_partner,
+           "exp": datetime.timestamp(datetime.now()+access_token_expires)
            }
     access_token = create_access_token(data=data)
 
     response.delete_cookie(COOKIE_NAME)
     response.set_cookie(COOKIE_NAME, access_token, expires=datetime.now(timezone.utc) + access_token_expires)
-    print("MINUTES", ACCESS_TOKEN_EXPIRE_MINUTES, access_token_expires)
     return data
 
 

@@ -2,7 +2,7 @@ from passlib.context import CryptContext
 from pydantic import BaseModel
 from typing import Union
 
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto",)
+pwd_context = CryptContext(schemes=["bcrypt"])
 
 
 class Token(BaseModel):
