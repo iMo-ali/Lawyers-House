@@ -1,4 +1,3 @@
-import "./User.css";
 import Navbar from "../components/Navbar(ONLYTEST)";
 import Image from "next/image";
 
@@ -15,7 +14,10 @@ export default function User() {
         <div className="bg-gray-100 p-5 flex rounded-2xl shadow-lg max-w-3xl">
           <div className="md:w-1/2 px-5">
             <h2 className="text-2xl font-bold text-[#002D74]">Login</h2>
-            <form className="mt-6" action="#" method="POST">
+            <form
+              className="mt-6"
+              action="http://localhost:8000/auth/token"
+              method="POST">
               <div>
                 <label className="block text-gray-700">Email Address</label>
                 <input
