@@ -53,5 +53,6 @@ async def get_all_cases(db: Annotated[Session, Depends(get_db)],
 @cases_router.get("/get-lawyer-cases")
 async def get_lawyer_cases(lawyer_id:int, db: Annotated[Session, Depends(get_db)]):
     return [FCase.model_validate(case) for case in select_cases_by_lawyer_id(db, lawyer_id)]
+
 # get cases of client
 # form to edit a case

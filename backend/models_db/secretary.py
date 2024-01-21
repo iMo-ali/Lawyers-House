@@ -47,3 +47,12 @@ def update_secretary_status(db:Session, id:int ,staff_status:STAFF_STATUS):
     except Exception as e:
         print(e)
         return False
+
+def update_secretary_row(db:Session, secretary_id, fname, lname, email, password, staff_status):
+    try:
+        db.execute(update(Secretary).where(Secretary.id==secretary_id).values(fname=fname, lname=lname, email=email, password=password, status=staff_status))
+        db.commit()
+        return True
+    except Exception as e:
+        print(e)
+        return False
