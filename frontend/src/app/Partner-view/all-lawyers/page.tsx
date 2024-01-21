@@ -3,27 +3,33 @@ import React, { useState, useEffect } from "react";
 import Navbar from "@/app/Partner-view/components/Navbar(Partner)";
 
 export default function MyCase() {
+  const authToken = localStorage.getItem("authToken");
   const [lawyers, setLawyers] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:8000/lawyers/all");
+        const response = await fetch("http://localhost:8000/lawyers/all", {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${authToken}`,
+            "Content-Type": "application/json",
+          },
+        });
+
         if (response.ok) {
           const data = await response.json();
           setLawyers(data);
         } else {
-          // Handle error
           console.error("Error fetching data:", response.status);
         }
       } catch (error) {
-        // Handle network or other errors
         console.error("Error fetching data:", error.message);
       }
     };
 
     fetchData();
-  }, []); // Empty dependency array means this effect runs once on mount
+  }, [authToken]);
 
   return (
     <>
@@ -33,7 +39,6 @@ export default function MyCase() {
       <section className="dashboard-container">
         <div className="overflow-x-auto px-9">
           <table className="table bg-white text-black">
-            {/* head */}
             <thead className="text-black text-xl text-center capitalize">
               <tr>
                 <th></th>

@@ -1,6 +1,7 @@
 "use client";
 import Typical from "react-typical";
 import Navbar from "./components/Navbar";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -43,7 +44,7 @@ export default function Home() {
           </div>
           <br />
           <button className="transition ease-in-out delay-150 hover:scale-110 hover:bg-indigo-500 duration-300 bg-[#e56f8c] text-white text-xs border font-semibold tracking-[0.5px] uppercase cursor-pointer mt-2.5 px-[45px] py-2.5 rounded-lg border-solid border-transparent">
-            <a href="/UserAccount">Join Us Now!</a>
+            <Link href="/UserAccount">Join Us Now!</Link>
           </button>
         </main>
       </div>
