@@ -1,7 +1,11 @@
 {
-  "/not-found": "app/not-found.js",
+  "/Partner-view/all-clients/page": "app/Partner-view/all-clients/page.js",
   "/Partner-view/all-lawyers/page": "app/Partner-view/all-lawyers/page.js",
-  "/UserAccount/page": "app/UserAccount/page.js",
   "/Partner-view/page": "app/Partner-view/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js"
+  "/UserAccount/page": "app/UserAccount/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/page": "app/page.js",
+  "/Partner-view/all-secretaries/page": "app/Partner-view/all-secretaries/page.js",
+  "/Partner-view/all-cases/page": "app/Partner-view/all-cases/page.js",
+  "/Partner-view/my-cases/page": "app/Partner-view/my-cases/page.js"
 }
