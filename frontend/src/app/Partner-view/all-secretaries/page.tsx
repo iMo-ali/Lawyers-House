@@ -9,11 +9,11 @@ export default function MyCase() {
       </section>
       <section className="dashboard-container">
         <div className="overflow-x-auto px-9">
-          <table className="table bg-white text-black">
+          <table className="table bg-blue text-black">
             {/* head */}
             <thead className="text-black text-xl text-center capitalize">
               <tr>
-                <th></th>
+                <th>No</th>
                 <th>Number of cases assigned</th>
                 <th>Number of cases made</th>
                 <th>email</th>

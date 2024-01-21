@@ -14,6 +14,7 @@ export default function User() {
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
       },
+      credentials: "include",
       body: new URLSearchParams({
         username: event.target.username.value,
         password: event.target.password.value,
@@ -21,8 +22,24 @@ export default function User() {
     });
 
     if (response.ok) {
-      const userData = await response.json();
+      // Extract the cookie from the response headers
+      const cookies = response.headers.get("Set-Cookie");
+      const authTokenMatch = /user_session=([^;]+)/.exec(cookies);
 
+      if (authTokenMatch) {
+        const authToken = authTokenMatch[1];
+
+        // Log the authentication token
+        console.log("authToken:", authToken);
+
+        // Store the authentication token in localStorage
+        localStorage.setItem("authToken", authToken);
+      } else {
+        console.error("Error extracting authToken from Set-Cookie header");
+      }
+
+      // Redirect logic remains the same
+      const userData = await response.json();
       if (userData.is_lawyer) {
         if (userData.is_partner) {
           console.log("Redirecting to /partner-page");
@@ -51,30 +68,32 @@ export default function User() {
               onSubmit={handleLogin}
               encType="application/x-www-form-urlencoded">
               <div>
-                <label className="block text-gray-700">Email Address</label>
-                <input
-                  type="email"
-                  name="username"
-                  id=""
-                  placeholder="Enter Email Address"
-                  className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
-                  autoFocus
-                  autoComplete=""
-                  required
-                />
+                <label className="block text-gray-700">
+                  Email Address
+                  <input
+                    type="email"
+                    name="username"
+                    placeholder="Enter Email Address"
+                    className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
+                    autoFocus
+                    autoComplete="email"
+                    required
+                  />
+                </label>
               </div>
               <div className="mt-4">
-                <label className="block text-gray-700">Password</label>
-                <input
-                  type="password"
-                  name="password"
-                  id=""
-                  placeholder="Enter Password"
-                  minLength={1}
-                  className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
+                <label className="block text-gray-700">
+                  Password
+                  <input
+                    type="password"
+                    name="password"
+                    placeholder="Enter Password"
+                    minLength={4}
+                    className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
                   focus:bg-white focus:outline-none"
-                  required
-                />
+                    required
+                  />
+                </label>
               </div>
               <div className="text-right mt-2">
                 <a
