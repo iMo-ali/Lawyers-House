@@ -1,7 +1,8 @@
 from fastapi import APIRouter, Depends, HTTPException,status, Form
 from auth.router import get_current_user
 from models_flask.case import FCase
-from models_db.case import (Case, Case_Status, insert_case, select_all_cases, select_cases_by_lawyer_id)
+from models_db.case import (Case, Case_Status, insert_case, select_all_cases,
+                             select_cases_by_lawyer_id, select_cases_by_client_id)
 from models_db.lawyer import (Lawyer, select_lawyer_names)
 from models_db.client import Client
 from models_db.secretary import Secretary
@@ -28,6 +29,7 @@ async def get_case_statuses(user:Annotated[Union[Lawyer, Client, Secretary], Dep
 async def create_case(db:Annotated[Session, Depends(get_db)],
                       user:Annotated[Union[Lawyer, Client, Secretary], Depends(get_current_user)],
                       client_id: Annotated[int, Form()],
+                        case_title: Annotated[str, Form()], 
                         case_description: Annotated[str, Form()], 
                         case_status:Annotated[Case_Status, Form()], 
                         lawyer_id:Annotated[int, Form()]= None,
@@ -36,7 +38,7 @@ async def create_case(db:Annotated[Session, Depends(get_db)],
     
     if isinstance(user, Client):
         raise nonstaff_access_exception
-    res = insert_case(db=db, client_id=client_id, case_description=case_description, case_status=case_status, lawyer_id=lawyer_id, date_created=date_created, date_closed=date_closed)
+    res = insert_case(db=db, client_id=client_id, case_title=case_title, case_description=case_description, case_status=case_status, lawyer_id=lawyer_id, date_created=date_created, date_closed=date_closed)
     if res:
         return True
     else:
@@ -55,4 +57,7 @@ async def get_lawyer_cases(lawyer_id:int, db: Annotated[Session, Depends(get_db)
     return [FCase.model_validate(case) for case in select_cases_by_lawyer_id(db, lawyer_id)]
 
 # get cases of client
+@cases_router.get("/get-client-cases")
+async def get_client_cases(client_id:int, db: Annotated[Session, Depends(get_db)]):
+    return [FCase.model_validate(case) for case in select_cases_by_client_id(db, client_id)]
 # form to edit a case

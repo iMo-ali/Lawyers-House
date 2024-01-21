@@ -18,18 +18,20 @@ class Case(Base):
     case_id: Mapped[int] = mapped_column(Integer, primary_key=True)
     lawyer_id: Mapped[int] = mapped_column(Integer, ForeignKey('LAWYER.laywer_id'), nullable=True)
     client_id: Mapped[int] = mapped_column(Integer, ForeignKey('CLIENT.client_id'))
+    case_title: Mapped[str] = mapped_column(nullable=False)
     case_description: Mapped[str] = mapped_column(nullable=False)
     date_created: Mapped[datetime] = mapped_column(nullable=False)
     date_closed: Mapped[datetime] = mapped_column(nullable=True)
     case_status: Mapped[Case_Status] = mapped_column(Enum(Case_Status))
     lawyer: Mapped["Lawyer"] = relationship(back_populates="cases")
     client: Mapped["Client"] = relationship(back_populates="cases")
+    tasks: Mapped["Task"] = relationship(back_populates="case", cascade="all, delete-orphan")
 
 Base.metadata.create_all(bind=engine)
 
-def insert_case(db, client_id, case_description, case_status, lawyer_id= None, date_created= None,  date_closed=None ):
+def insert_case(db, client_id, case_title, case_description, case_status, lawyer_id= None, date_created= None,  date_closed=None ):
     date_created = datetime.now() if date_created is None else date_created
-    case = Case(lawyer_id=lawyer_id, client_id=client_id, case_description=case_description, case_status=case_status, date_created=date_created, date_closed=date_closed)
+    case = Case(lawyer_id=lawyer_id, client_id=client_id, case_title=case_title, case_description=case_description, case_status=case_status, date_created=date_created, date_closed=date_closed)
     try:
             
         db.add(case)
@@ -49,6 +51,14 @@ def select_all_cases(db:Session):
 def select_cases_by_lawyer_id(db:Session, lawyer_id):
     try:
         cases = db.execute(select(Case).where(Case.lawyer_id==lawyer_id)).scalars()
+        return cases
+    except Exception as e:
+        print(e)
+        return []
+    
+def select_cases_by_client_id(db:Session, client_id):
+    try:
+        cases = db.execute(select(Case).where(Case.client_id==client_id)).scalars()
         return cases
     except Exception as e:
         print(e)
