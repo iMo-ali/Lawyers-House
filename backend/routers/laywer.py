@@ -4,7 +4,7 @@ from models_flask.lawyer import FLawyer
 from models_db.lawyer import (Lawyer, is_valid_partner, select_all_lawyers,
                                select_lawyer_by_id, select_lawyer_by_email, 
                                STAFF_STATUS, Lawyer_Type, insert_lawyer, 
-                               update_lawyer_status)
+                               update_lawyer_status, update_lawyer_row)
 from models_db.client import Client
 from models_db.secretary import Secretary
 from typing import Annotated, Union
@@ -69,3 +69,22 @@ async def get_lawyer_by_id(lawyer_id:int, user:Annotated[Union[Lawyer,Client, Se
         raise nonlawyer_access_exception
     
 
+@router.put("/update-lawyer", tags=["lawyers"])
+def update_lawyer_information(  user:Annotated[Union[Lawyer,Client, Secretary],
+                                Depends(get_current_user)],
+                                db:Annotated[Session, Depends(get_db)],
+                                lawyer_id:Annotated[int, Form()],
+                                fname:Annotated[str, Form()],
+                                lname:Annotated[str, Form()],
+                                email:Annotated[EmailStr, Form()],
+                                password:Annotated[str, Form()],
+                                lawyer_type:Annotated[Lawyer_Type, Form()],
+                                staff_status:Annotated[STAFF_STATUS, Form()]):
+    if not isinstance(user, Lawyer):
+        raise nonlawyer_access_exception
+    res = update_lawyer_row(db, lawyer_id, fname, lname, email, password, lawyer_type, staff_status)
+    if res:
+        return True
+    else:
+        return False
+    

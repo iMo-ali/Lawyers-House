@@ -64,3 +64,11 @@ def update_lawyer_status(db:Session, id:int ,staff_status:STAFF_STATUS):
     except Exception as e:
         print(e)
         return False
+def update_lawyer_row(db:Session, lawyer_id, fname, lname, email, password, lawyer_type, staff_status):
+    try:
+        db.execute(update(Lawyer).where(Lawyer.id==lawyer_id).values(fname=fname, lname=lname, email=email, password=password, lawyer_type=lawyer_type, status=staff_status))
+        db.commit()
+        return True
+    except Exception as e:
+        print(e)
+        return False
