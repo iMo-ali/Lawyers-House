@@ -18,7 +18,7 @@ class Secretary(Base):
 
 Base.metadata.create_all(bind = engine)
 
-def select_all_secretarys(db:Session):
+def select_all_secretaries(db:Session):
     return db.execute(select(Secretary).order_by(Secretary.status)).scalars()
 
 def select_secretary_by_id(db:Session, secretary_id:int):

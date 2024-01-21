@@ -3,7 +3,7 @@ from auth.router import get_current_user
 from routers.case import nonstaff_access_exception
 from models_flask.secretary import FSecretary
 from models_db.lawyer import (Lawyer, is_valid_partner, STAFF_STATUS)
-from models_db.secretary import (select_all_secretarys, select_secretary_by_id, 
+from models_db.secretary import (select_all_secretaries, select_secretary_by_id, 
                                 insert_secretary, update_secretary_status, update_secretary_row)
 from models_db.client import Client
 from models_db.secretary import Secretary
@@ -15,18 +15,18 @@ from db.core import get_db
 from typing import List
 from routers.laywer import nonlawyer_access_exception
 
-secretarys_router = APIRouter(prefix="/secretarys", tags=["secretarys"])
+secretaries_router = APIRouter(prefix="/secretaries", tags=["secretaries"])
 
-@secretarys_router.get("/all", response_model=List[FSecretary])
-async def get_all_secretarys(user:Annotated[Union[Lawyer,Client, Secretary], Depends(get_current_user)], db:Annotated[Session, Depends(get_db)]):#(db:Annotated[Session, Depends(get_db)], username: Annotated[EmailStr, Depends(real_get_current_user)]):
+@secretaries_router.get("/all", response_model=List[FSecretary])
+async def get_all_secretaries(user:Annotated[Union[Lawyer,Client, Secretary], Depends(get_current_user)], db:Annotated[Session, Depends(get_db)]):#(db:Annotated[Session, Depends(get_db)], username: Annotated[EmailStr, Depends(real_get_current_user)]):
     username = user.email
     if not isinstance(user, Lawyer):
         raise nonlawyer_access_exception
-    #return [FSecretary(**secretary.__dict__) for secretary in select_all_secretarys(db)]
-    return [FSecretary.model_validate(secretary) for secretary in select_all_secretarys(db)]
+    #return [FSecretary(**secretary.__dict__) for secretary in select_all_secretaries(db)]
+    return [FSecretary.model_validate(secretary) for secretary in select_all_secretaries(db)]
 
 
-@secretarys_router.post("/add", tags=["secretarys"])
+@secretaries_router.post("/add", tags=["secretaries"])
 async def post_secretary(fname:Annotated[str, Form()], lname:Annotated[str, Form()], email:Annotated[EmailStr, Form()], password:Annotated[str, Form()], staff_status:Annotated[STAFF_STATUS, Form()],user:Annotated[Union[Lawyer,Client, Secretary], Depends(get_current_user)], db:Annotated[Session, Depends(get_db)]):
     if not isinstance(user, Lawyer):
         raise nonlawyer_access_exception
@@ -36,9 +36,9 @@ async def post_secretary(fname:Annotated[str, Form()], lname:Annotated[str, Form
     return True
     
 
-@secretarys_router.put("/change-status", tags=["secretarys"])
+@secretaries_router.put("/change-status", tags=["secretaries"])
 def change_secretary_status(id: Annotated[int, Form()], user:Annotated[Union[Lawyer, Client, Secretary], Depends(get_current_user)], staff_status:Annotated[STAFF_STATUS, Form()], db:Annotated[Session, Depends(get_db)]):
-    # only partners change the secretarys statuses
+    # only partners change the secretaries statuses
     if not isinstance(user, Lawyer):
         raise nonlawyer_access_exception
     if update_secretary_status(db, id, staff_status):
@@ -47,7 +47,7 @@ def change_secretary_status(id: Annotated[int, Form()], user:Annotated[Union[Law
         return False
 
 
-@secretarys_router.put("/update-secretary", tags=["secretarys"])
+@secretaries_router.put("/update-secretary", tags=["secretaries"])
 def update_secretary_information(  user:Annotated[Union[Lawyer,Client, Secretary],
                                 Depends(get_current_user)],
                                 db:Annotated[Session, Depends(get_db)],
@@ -65,9 +65,9 @@ def update_secretary_information(  user:Annotated[Union[Lawyer,Client, Secretary
     else:
         return False
 
-@secretarys_router.get("/{secretary_id}", tags=["secretarys"])
+@secretaries_router.get("/{secretary_id}", tags=["secretaries"])
 async def get_secretary_by_id(secretary_id:int, user:Annotated[Union[Lawyer,Client, Secretary], Depends(get_current_user)], db:Annotated[Session, Depends(get_db)]):
-    # allow secretarys to view each other
+    # allow secretaries to view each other
     if not isinstance(user, Lawyer):
         raise nonlawyer_access_exception
 
