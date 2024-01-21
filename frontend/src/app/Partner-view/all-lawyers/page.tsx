@@ -15,6 +15,7 @@ export default function MyCase() {
             Authorization: `Bearer ${authToken}`,
             "Content-Type": "application/json",
           },
+          credentials: "include",
         });
 
         if (response.ok) {

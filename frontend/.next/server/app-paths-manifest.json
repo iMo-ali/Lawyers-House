@@ -3,6 +3,5 @@
   "/Partner-view/all-lawyers/page": "app/Partner-view/all-lawyers/page.js",
   "/UserAccount/page": "app/UserAccount/page.js",
   "/Partner-view/page": "app/Partner-view/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/page": "app/page.js"
+  "/favicon.ico/route": "app/favicon.ico/route.js"
 }
