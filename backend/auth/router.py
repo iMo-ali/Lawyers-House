@@ -131,9 +131,9 @@ async def login_for_access_token(
     access_token = create_access_token(data=data)
 
     response.delete_cookie(COOKIE_NAME)
-    response.set_cookie(COOKIE_NAME, access_token, expires=datetime.now(timezone.utc) + access_token_expires, 
-    httponly=True, samesite='none')
     
+    response.set_cookie(COOKIE_NAME, access_token, expires=datetime.now(timezone.utc) + access_token_expires,
+                        httponly=True, samesite='none')
     return data
 
 
