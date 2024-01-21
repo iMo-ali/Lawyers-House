@@ -1,16 +1,17 @@
 from db.core import Base, engine
 from sqlalchemy import  select, Enum, insert, update
-from sqlalchemy.orm import Mapped, mapped_column, Session
+from sqlalchemy.orm import Mapped, mapped_column, Session, relationship
 import enum
 from datetime import datetime
 from models_db import STAFF_STATUS
-
-
+from typing import List
+# from models_db.case import Case
 class Lawyer_Type(enum.Enum):
     PARTNER = "PARTNER"
     PARALEGAL = "PARALEGAL"
 class Lawyer(Base):
     __tablename__ = "LAWYER"
+    __table_args__ = {'extend_existing': True}
     id: Mapped[int] = mapped_column(primary_key=True, name="laywer_id")
     fname: Mapped[str]
     lname:Mapped[str]
@@ -19,6 +20,7 @@ class Lawyer(Base):
     date_registered:Mapped[datetime]
     lawyer_type:Mapped[Lawyer_Type] = mapped_column(Enum(Lawyer_Type))
     status:Mapped[STAFF_STATUS] = mapped_column(Enum(STAFF_STATUS))
+    cases:Mapped[List["Case"]] = relationship(back_populates='lawyer')
 
 Base.metadata.create_all(bind = engine)
     
@@ -72,3 +74,8 @@ def update_lawyer_row(db:Session, lawyer_id, fname, lname, email, password, lawy
     except Exception as e:
         print(e)
         return False
+    
+def select_lawyer_names(db:Session):
+    lawyers:List[Lawyer] = db.execute(select(Lawyer)).scalars()
+    return [{"id":lawyer.id, "name": f"{lawyer.fname} {lawyer.lname}"} 
+            for lawyer in lawyers]

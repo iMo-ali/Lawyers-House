@@ -1,18 +1,21 @@
 from db.core import Base, engine
-from sqlalchemy.orm import Mapped, mapped_column, Session
+from sqlalchemy.orm import Mapped, mapped_column, Session, relationship
 from sqlalchemy import select, update, insert
 from datetime import datetime
-
+from typing import List
+# from models_db.case import Case
 
 
 class Client(Base):
     __tablename__ = "CLIENT"
+    __table_args__ = {'extend_existing': True}
     id: Mapped[int] = mapped_column(primary_key=True, name="client_id")
     fname: Mapped[str]
     lname:Mapped[str]
     email:Mapped[str] = mapped_column(unique=True)
     password:Mapped[str] = mapped_column(name="password")
     date_registered:Mapped[datetime]
+    cases:Mapped[List["Case"]] = relationship(back_populates='client', cascade="all, delete-orphan")
 
 Base.metadata.create_all(bind = engine)
 
