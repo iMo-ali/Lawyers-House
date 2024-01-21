@@ -7,8 +7,31 @@ export default function Home() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:8000/lawyers/all");
-        const jsonData = await response.json();
+        // const formData = new FormData();
+        // formData.append('username', 'hazem@lawyer.com');
+        // formData.append('password', 'pass');
+        const mdata = {
+          username: 'hazem@laywer.com',
+          password: 'pass'
+        };
+        var f = new FormData();
+        f.append('username', 'hazem@laywer.com');
+        f.append('password', 'pass');
+
+        const response1 = await fetch("http://localhost:8000/auth/token",{
+        method:"POST",
+        headers:{
+          'accept': "application/json",
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(mdata),
+        credentials: 'include'});
+
+        console.log(response1);
+        const response2 = await fetch("http://localhost:8000/lawyers/all",
+        );
+        const jsonData = await response2.json();
+        console.log(jsonData);
         setData(jsonData);
       } catch (error) {
         console.error("Error fetching data:", error);
