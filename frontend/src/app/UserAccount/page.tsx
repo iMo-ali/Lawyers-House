@@ -14,6 +14,7 @@ export default function User() {
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
       },
+      credentials: "include",
       body: new URLSearchParams({
         username: event.target.username.value,
         password: event.target.password.value,

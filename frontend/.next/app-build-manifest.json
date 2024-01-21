@@ -1,15 +1,25 @@
 {
   "pages": {
-    "/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/page.js"
-    ],
     "/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
+    ],
+    "/Partner-view/all-lawyers/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/Partner-view/all-lawyers/page.js"
+    ],
+    "/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/page.js"
+    ],
+    "/UserAccount/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/UserAccount/page.js"
     ],
     "/Partner-view/page": [
       "static/chunks/webpack.js",
@@ -17,10 +27,10 @@
       "static/css/app/Partner-view/page.css",
       "static/chunks/app/Partner-view/page.js"
     ],
-    "/Partner-view/my-cases/page": [
+    "/not-found": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/Partner-view/my-cases/page.js"
+      "static/chunks/app/not-found.js"
     ]
   }
 }

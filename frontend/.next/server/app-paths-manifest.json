@@ -1,5 +1,8 @@
 {
-  "/page": "app/page.js",
+  "/not-found": "app/not-found.js",
+  "/Partner-view/all-lawyers/page": "app/Partner-view/all-lawyers/page.js",
+  "/UserAccount/page": "app/UserAccount/page.js",
   "/Partner-view/page": "app/Partner-view/page.js",
-  "/Partner-view/my-cases/page": "app/Partner-view/my-cases/page.js"
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/page": "app/page.js"
 }
