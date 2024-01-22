@@ -42,9 +42,11 @@ const TotalNumberOfClients = () => {
       <div className="p-4 max-w-sm w-full bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100">
         <p className="text-lg text-gray-700">Total Clients: {totalClients}</p>
       </div>
-      <button className="bg-white border block hover:bg-blue-400 focus:bg-blue-400 text-black font-semibold rounded-lg bg-black px-4 py-3 mt-6">
-        <Link href="/Partner-view/all-clients">View All Clients</Link>
-      </button>
+      <Link href="/Partner-view/all-clients">
+        <button className="bg-white border block hover:bg-blue-400 focus:bg-blue-400 text-black font-semibold rounded-lg bg-black px-4 py-3 mt-6">
+          View All Clients
+        </button>
+      </Link>
     </div>
   );
 };

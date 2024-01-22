@@ -36,15 +36,12 @@ export default function AllLawyers() {
   }, [authToken]);
 
   const handleSort = (criteria) => {
-    // Toggle sorting order if the same criteria is clicked
     const newSortOrder =
       criteria === sortCriteria
         ? sortOrder === "asc"
           ? "desc"
           : "asc"
         : "asc";
-
-    // Update sort criteria and order
     setSortCriteria(criteria);
     setSortOrder(newSortOrder);
 

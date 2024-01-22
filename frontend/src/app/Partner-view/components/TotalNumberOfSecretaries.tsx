@@ -44,9 +44,11 @@ const TotalNumberOfSecretaries = () => {
           Total Secretaries: {totalClients}
         </p>
       </div>
-      <button className="bg-white border block hover:bg-blue-400 focus:bg-blue-400 text-black font-semibold rounded-lg bg-black px-4 py-3 mt-6">
-        <Link href="/Partner-view/all-secretaries">View All secretaries</Link>
-      </button>
+      <Link href="/Partner-view/all-secretaries">
+        <button className="bg-white border block hover:bg-blue-400 focus:bg-blue-400 text-black font-semibold rounded-lg bg-black px-4 py-3 mt-6">
+          View All secretaries
+        </button>
+      </Link>
     </div>
   );
 };

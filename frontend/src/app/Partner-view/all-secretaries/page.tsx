@@ -9,29 +9,29 @@ export default function AllSecretaries() {
   const [sortCriteria, setSortCriteria] = useState(null);
   const [sortOrder, setSortOrder] = useState("asc");
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("http://localhost:8000/secretaries/all", {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${authToken}`,
-            "Content-Type": "application/json",
-          },
-          credentials: "include",
-        });
+  const fetchData = async () => {
+    try {
+      const response = await fetch("http://localhost:8000/secretaries/all", {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      });
 
-        if (response.ok) {
-          const data = await response.json();
-          setSecretaries(data);
-        } else {
-          console.error("Error fetching data:", response.status);
-        }
-      } catch (error) {
-        console.error("Error fetching data:", error.message);
+      if (response.ok) {
+        const data = await response.json();
+        setSecretaries(data);
+      } else {
+        console.error("Error fetching data:", response.status);
       }
-    };
+    } catch (error) {
+      console.error("Error fetching data:", error.message);
+    }
+  };
 
+  useEffect(() => {
     fetchData();
   }, [authToken]);
 
@@ -72,7 +72,7 @@ export default function AllSecretaries() {
       formObject[key] = value.toString();
     });
 
-    const { fname, lname, email, password } = formObject;
+    const { fname, lname, email, password, staff_status } = formObject;
 
     if (!email.endsWith("@secretary.com")) {
       console.error("Email must end with @secretary.com");
@@ -85,11 +85,8 @@ export default function AllSecretaries() {
       return;
     }
 
-    // API URL for adding secretaries
-    const apiUrl = "http://localhost:8000/secretaries/add";
-
     try {
-      const response = await fetch(apiUrl, {
+      const response = await fetch("http://localhost:8000/secretaries/add", {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
@@ -242,6 +239,18 @@ export default function AllSecretaries() {
             focus:bg-white focus:outline-none"
                       required
                     />
+                  </label>
+                  <label className="block text-gray-700">
+                    Secretary Status
+                    <select
+                      name="staff_status"
+                      className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none"
+                      required>
+                      <option value="">Select Secretary Status</option>
+                      <option value="ACTIVE">Active</option>
+                      <option value="TERMINATED">Terminated</option>
+                      <option value="ON_LEAVE">On Leave</option>
+                    </select>
                   </label>
                 </div>
                 <div className="text-right mt-2">
