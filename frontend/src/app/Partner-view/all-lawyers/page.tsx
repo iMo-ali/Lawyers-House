@@ -4,7 +4,7 @@ import Navbar from "@/app/components_Partner/Navbar(Partner)";
 import { AiOutlineArrowUp, AiOutlineArrowDown } from "react-icons/ai";
 
 export default function AllLawyers() {
-  const authToken = localStorage.getItem("authToken");
+  // const authToken = localStorage.getItem("authToken");
   const [lawyers, setLawyers] = useState([]);
   const [sortCriteria, setSortCriteria] = useState(null);
   const [sortOrder, setSortOrder] = useState("asc");
@@ -14,7 +14,7 @@ export default function AllLawyers() {
       const response = await fetch("http://localhost:8000/lawyers/all", {
         method: "GET",
         headers: {
-          Authorization: `Bearer ${authToken}`,
+          // Authorization: `Bearer ${authToken}`,
           "Content-Type": "application/json",
         },
         credentials: "include",
@@ -32,8 +32,9 @@ export default function AllLawyers() {
   };
 
   useEffect(() => {
-    fetchData();
-  }, [authToken]);
+  //   fetchData();
+  // }, [authToken]);
+  fetchData();}, []);
 
   const handleSort = (criteria) => {
     const newSortOrder =
@@ -99,7 +100,7 @@ export default function AllLawyers() {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
-          Authorization: `Bearer ${authToken}`,
+          // Authorization: `Bearer ${authToken}`,
         },
         credentials: "include",
         body: urlSearchParams.toString(),

@@ -26,17 +26,17 @@ export default function User() {
       const cookies = response.headers.get("Set-Cookie");
       const authTokenMatch = /user_session=([^;]+)/.exec(cookies);
 
-      if (authTokenMatch) {
-        const authToken = authTokenMatch[1];
+      // if (authTokenMatch) {
+      //   const authToken = authTokenMatch[1];
 
-        // Log the authentication token
-        console.log("authToken:", authToken);
+      //   // Log the authentication token
+      //   console.log("authToken:", authToken);
 
-        // Store the authentication token in localStorage
-        localStorage.setItem("authToken", authToken);
-      } else {
-        console.error("Error extracting authToken from Set-Cookie header");
-      }
+      //   // Store the authentication token in localStorage
+      //   localStorage.setItem("authToken", authToken);
+      // } else {
+      //   console.error("Error extracting authToken from Set-Cookie header");
+      // }
 
       // Redirect logic remains the same
       const userData = await response.json();

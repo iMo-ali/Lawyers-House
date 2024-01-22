@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 
 const TotalNumberOfClients = () => {
   const [totalClients, setTotalClients] = useState(0);
-  const authToken = localStorage.getItem("authToken");
+  // const authToken = localStorage.getItem("authToken");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -11,7 +11,7 @@ const TotalNumberOfClients = () => {
         const response = await fetch("http://localhost:8000/clients/all", {
           method: "GET",
           headers: {
-            Authorization: `Bearer ${authToken}`,
+            // Authorization: `Bearer ${authToken}`,
             "Content-Type": "application/json",
           },
           credentials: "include",

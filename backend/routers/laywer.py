@@ -27,8 +27,8 @@ async def get_all_lawyers(user:Annotated[Union[Lawyer,Client, Secretary], Depend
     username = user.email
     if not isinstance(user, Lawyer):
         raise  nonlawyer_access_exception
-    if not is_valid_partner(db, username):
-        raise nonpartner_access_exception
+    # if not is_valid_partner(db, username):
+    #     raise nonpartner_access_exception
     #return [FLawyer(**lawyer.__dict__) for lawyer in select_all_lawyers(db)]
     return [FLawyer.model_validate(lawyer) for lawyer in select_all_lawyers(db)]
 

@@ -4,7 +4,7 @@ import Navbar from "@/app/components_Partner/Navbar(Partner)";
 import { AiOutlineArrowUp, AiOutlineArrowDown } from "react-icons/ai";
 
 export default function AllClients() {
-  const authToken = localStorage.getItem("authToken");
+  // const authToken = localStorage.getItem("authToken");
   const [clients, setClients] = useState([]);
   const [sortCriteria, setSortCriteria] = useState(null);
   const [sortOrder, setSortOrder] = useState("asc");
@@ -14,7 +14,7 @@ export default function AllClients() {
       const response = await fetch("http://localhost:8000/clients/all", {
         method: "GET",
         headers: {
-          Authorization: `Bearer ${authToken}`,
+          // Authorization: `Bearer ${authToken}`,
           "Content-Type": "application/json",
         },
         credentials: "include",
@@ -30,8 +30,10 @@ export default function AllClients() {
   };
 
   useEffect(() => {
-    fetchData();
-  }, [authToken]);
+  //   fetchData();
+  // }, [authToken]);
+  fetchData();
+  }, []);
 
   const handleSort = (criteria) => {
     const newSortOrder =
@@ -93,7 +95,7 @@ export default function AllClients() {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
-          Authorization: `Bearer ${authToken}`,
+          // Authorization: `Bearer ${authToken}`,
         },
         credentials: "include",
         body: new URLSearchParams(formObject).toString(),

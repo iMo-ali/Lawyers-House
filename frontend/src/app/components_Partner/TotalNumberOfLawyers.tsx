@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 const TotalNumberOfLawyers = () => {
   const [totalLawyers, setTotalLawyers] = useState(0);
   const [lawyerTypesCount, setLawyerTypesCount] = useState({});
-  const authToken = localStorage.getItem("authToken");
+  // const authToken = localStorage.getItem("authToken");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -12,7 +12,7 @@ const TotalNumberOfLawyers = () => {
         const response = await fetch("http://localhost:8000/lawyers/all", {
           method: "GET",
           headers: {
-            Authorization: `Bearer ${authToken}`,
+            // Authorization: `Bearer ${authToken}`,
             "Content-Type": "application/json",
           },
           credentials: "include",
