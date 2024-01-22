@@ -18,7 +18,8 @@ from routers.laywer import nonlawyer_access_exception
 secretaries_router = APIRouter(prefix="/secretaries", tags=["secretaries"])
 
 @secretaries_router.get("/all", response_model=List[FSecretary])
-async def get_all_secretaries(user:Annotated[Union[Lawyer,Client, Secretary], Depends(get_current_user)], db:Annotated[Session, Depends(get_db)]):#(db:Annotated[Session, Depends(get_db)], username: Annotated[EmailStr, Depends(real_get_current_user)]):
+async def get_all_secretaries(user:Annotated[Union[Lawyer,Client, Secretary],
+                                              Depends(get_current_user)], db:Annotated[Session, Depends(get_db)]):
     username = user.email
     if not isinstance(user, Lawyer):
         raise nonlawyer_access_exception
