@@ -1,4 +1,4 @@
-import Navbar from "@/app/Partner-view/components/Navbar(Partner)";
+import Navbar from "@/app/components_Partner/Navbar(Partner)";
 import React from "react";
 
 export default function documentgeneration() {

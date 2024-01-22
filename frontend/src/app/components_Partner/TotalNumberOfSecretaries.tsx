@@ -26,9 +26,7 @@ const TotalNumberOfSecretaries = () => {
             response.status
           );
         }
-      } catch (error) {
-        console.error("Error fetching total number of clients:", error.message);
-      }
+      } catch (error) {}
     };
 
     fetchData();

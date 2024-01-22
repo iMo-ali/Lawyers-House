@@ -3,10 +3,10 @@ import React from "react";
 import CalendarWithTasks from "../components/CalendarWithTasks";
 import CaseStatistics from "../components/CaseStatistics";
 import CasesByLawyer from "../components/CasesByLawyer";
-import Navbar from "./components/Navbar(Partner)";
-import TotalNumberOfLawyers from "./components/TotalNumberOfLawyers";
-import TotalNumberOfClients from "./components/TotalNumberOfClients";
-import TotalNumberOfSecretaries from "./components/TotalNumberOfSecretaries";
+import Navbar from "../components_Partner/Navbar(Partner)";
+import TotalNumberOfLawyers from "../components_Partner/TotalNumberOfLawyers";
+import TotalNumberOfClients from "../components_Partner/TotalNumberOfClients";
+import TotalNumberOfSecretaries from "../components_Partner/TotalNumberOfSecretaries";
 
 export default function ParalegalPage() {
   return (

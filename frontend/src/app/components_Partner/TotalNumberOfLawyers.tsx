@@ -35,9 +35,7 @@ const TotalNumberOfLawyers = () => {
             response.status
           );
         }
-      } catch (error) {
-        console.error("Error fetching total number of lawyers:", error.message);
-      }
+      } catch (error) {}
     };
 
     fetchData();
