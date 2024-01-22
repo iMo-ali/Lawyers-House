@@ -2,7 +2,7 @@
 import React from "react";
 import CalendarWithTasks from "../components/CalendarWithTasks";
 import CaseStatistics from "../components/CaseStatistics";
-import LongestRunningCase from "../components/LongestRunningCase";
+import LongestRunningCase from "../Partner-view/components/TotalNumberOfLawyers";
 import CasesByLawyer from "../components/CasesByLawyer";
 import Navbar from "./components/Navbar(Paralegal)";
 

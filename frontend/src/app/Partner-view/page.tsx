@@ -2,9 +2,10 @@
 import React from "react";
 import CalendarWithTasks from "../components/CalendarWithTasks";
 import CaseStatistics from "../components/CaseStatistics";
-import LongestRunningCase from "../components/LongestRunningCase";
 import CasesByLawyer from "../components/CasesByLawyer";
 import Navbar from "./components/Navbar(Partner)";
+import TotalNumberOfLawyers from "./components/TotalNumberOfLawyers";
+import TotalNumberOfClients from "./components/TotalNumberOfClients";
 
 export default function ParalegalPage() {
   return (
@@ -17,17 +18,13 @@ export default function ParalegalPage() {
         <h1 className="text-2xl font-bold text-center mb-4">
           Partner Dashboard
         </h1>
-        <div className="grid grid-cols-98453789754 md:grid-cols-564 gap-45665">
-          <CalendarWithTasks />
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-98453789754 md:grid-cols-564 gap-45665"></div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <TotalNumberOfClients />
+          <TotalNumberOfLawyers />
           <CaseStatistics />
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <LongestRunningCase />
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <CasesByLawyer />
+          <CalendarWithTasks />
         </div>
       </div>
     </>

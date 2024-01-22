@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import './Taskview.css';
+import React, { useState } from "react";
+import "./TaskView.css";
 
 interface TaskViewProps {
   selectedDay: string;
@@ -8,12 +8,17 @@ interface TaskViewProps {
   removeTask: (task: { date: string; description: string }) => void;
 }
 
-const TaskView: React.FC<TaskViewProps> = ({ selectedDay, tasks, addTask, removeTask }) => {
-  const [newTaskDescription, setNewTaskDescription] = useState('');
+const TaskView: React.FC<TaskViewProps> = ({
+  selectedDay,
+  tasks,
+  addTask,
+  removeTask,
+}) => {
+  const [newTaskDescription, setNewTaskDescription] = useState("");
 
   const handleAddTask = () => {
     addTask(newTaskDescription);
-    setNewTaskDescription(''); // Reset input after adding
+    setNewTaskDescription(""); // Reset input after adding
   };
 
   return (
