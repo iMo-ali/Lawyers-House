@@ -26,9 +26,7 @@ export default function AllClients() {
       } else {
         console.error("Error fetching data:", response.status);
       }
-    } catch (error) {
-      console.error("Error fetching data:", error.message);
-    }
+    } catch (error) {}
   };
 
   useEffect(() => {
