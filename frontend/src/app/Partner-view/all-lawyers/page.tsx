@@ -71,29 +71,29 @@ export default function AllLawyers() {
 
   const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-  
+
     const formData = new FormData(event.currentTarget);
     const formObject: { [key: string]: string } = {};
     formData.forEach((value, key) => {
       formObject[key] = value.toString();
     });
-  
+
     const { fname, lname, email, lawyer_type, staff_status } = formObject;
-  
+
     if (!email.endsWith("@lawyer.com")) {
       console.error("Email must end with @lawyer.com");
       return;
     }
-  
+
     const isValidName = (name: string) => /^[A-Za-z]+$/.test(name);
-  
+
     if (!isValidName(fname) || !isValidName(lname)) {
       console.error("First and last names must only contain letters");
       return;
     }
-  
+
     const urlSearchParams = new URLSearchParams(formObject);
-  
+
     try {
       const response = await fetch("http://localhost:8000/lawyers/add", {
         method: "POST",
@@ -104,7 +104,7 @@ export default function AllLawyers() {
         credentials: "include",
         body: urlSearchParams.toString(),
       });
-  
+
       if (response.ok) {
         fetchData();
         document.getElementById("my_modal_3").close();
@@ -115,7 +115,6 @@ export default function AllLawyers() {
       console.error("Error adding lawyer:", error.message);
     }
   };
-
 
   return (
     <>
@@ -192,8 +191,8 @@ export default function AllLawyers() {
                   className="transition ease-in-out delay-60 hover:bg-indigo-500 duration-300">
                   <th>{index + 1}</th>
                   <td>{`${lawyer.fname} ${lawyer.lname}`}</td>
-                  <td>{lawyer.lawyer_type}</td>
                   <td>{lawyer.email}</td>
+                  <td>{lawyer.lawyer_type}</td>
                   <td>{lawyer.status}</td>
                   <td>{lawyer.date_registered}</td>
                 </tr>
