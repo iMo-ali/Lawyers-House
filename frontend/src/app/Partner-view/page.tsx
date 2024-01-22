@@ -6,6 +6,7 @@ import CasesByLawyer from "../components/CasesByLawyer";
 import Navbar from "./components/Navbar(Partner)";
 import TotalNumberOfLawyers from "./components/TotalNumberOfLawyers";
 import TotalNumberOfClients from "./components/TotalNumberOfClients";
+import TotalNumberOfSecretaries from "./components/TotalNumberOfSecretaries";
 
 export default function ParalegalPage() {
   return (
@@ -19,9 +20,11 @@ export default function ParalegalPage() {
           Partner Dashboard
         </h1>
         <div className="grid grid-cols-98453789754 md:grid-cols-564 gap-45665"></div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <TotalNumberOfClients />
           <TotalNumberOfLawyers />
+          <TotalNumberOfSecretaries />
+
           <CaseStatistics />
           <CasesByLawyer />
           <CalendarWithTasks />

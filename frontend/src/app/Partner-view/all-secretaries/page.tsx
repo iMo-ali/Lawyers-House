@@ -74,8 +74,8 @@ export default function AllSecretaries() {
 
     const { fname, lname, email, password } = formObject;
 
-    if (!email.endsWith("@lawyer.com")) {
-      console.error("Email must end with @lawyer.com");
+    if (!email.endsWith("@secretary.com")) {
+      console.error("Email must end with @secretary.com");
       return;
     }
 
