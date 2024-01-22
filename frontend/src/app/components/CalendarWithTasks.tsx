@@ -1,10 +1,9 @@
-// ./src/app/components/CalendarWithTasks.tsx
 "use client";
 import React, { useState } from "react";
 import Calendar from "react-calendar";
 import TaskView from "./TaskView";
 import "react-calendar/dist/Calendar.css";
-import "./CalendarWithTasks.css"; // Ensure your custom CSS is imported
+import "./CalendarWithTasks.css";
 
 const CalendarWithTasks = () => {
   const [selectedDay, setSelectedDay] = useState(new Date());
