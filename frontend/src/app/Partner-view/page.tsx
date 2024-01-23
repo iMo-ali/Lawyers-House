@@ -8,7 +8,7 @@ import TotalNumberOfLawyers from "../components_Partner/TotalNumberOfLawyers";
 import TotalNumberOfClients from "../components_Partner/TotalNumberOfClients";
 import TotalNumberOfSecretaries from "../components_Partner/TotalNumberOfSecretaries";
 
-export default function ParalegalPage() {
+export default function PartnerPage() {
   return (
     <>
       <section>
