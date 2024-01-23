@@ -72,14 +72,7 @@ export default function Navbar() {
         <ul
           tabIndex={0}
           className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 bg-gray-400 z-50">
-          <li>
-            <Link
-              href="/home"
-              className="block py-2 px-4 text-gray-800 rounded hover:bg-blue-500 hover:text-white">
-              Profile
-            </Link>
-            {/* Link can take a className directly dont use <a> tag */}
-          </li>
+
           <li>
             <Link
               href="/UserAccount"
