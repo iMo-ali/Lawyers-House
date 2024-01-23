@@ -18,7 +18,7 @@ export default function Home() {
             </h1>
             <h3 className="font-mono text-back text-5xl">
               A Website that{" "}
-              <strong className="bg-blue-400 text-white">Automate</strong>{" "}
+              <strong className="bg-blue-400 text-white">Include</strong>{" "}
               everything about your Law{" "}
               <strong className="bg-yellow-400">Needs!</strong>
             </h3>

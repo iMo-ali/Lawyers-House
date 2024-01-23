@@ -63,13 +63,6 @@ export default function Navbar() {
               Client Page
             </Link>
           </li>
-          <li>
-            <Link
-              href="/Partner-view/doc-gen"
-              className="block py-2 px-4 text-gray-800 rounded hover:bg-blue-500 hover:text-white">
-              Document Creation Page
-            </Link>
-          </li>
         </ul>
       </div>
 

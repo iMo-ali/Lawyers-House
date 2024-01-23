@@ -95,13 +95,6 @@ export default function User() {
                   />
                 </label>
               </div>
-              <div className="text-right mt-2">
-                <a
-                  href="#"
-                  className="text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700">
-                  Forgot Password?
-                </a>
-              </div>
               <button
                 type="submit"
                 className="bg-white border w-full block hover:bg-blue-400 focus:bg-blue-400 text-black font-semibold rounded-lg bg-black
@@ -109,18 +102,6 @@ export default function User() {
                 Log in
               </button>
             </form>
-            <div className="mt-7 grid grid-cols-3 items-center text-gray-500">
-              <hr className="border-gray-500" />
-              <p className="text-center text-sm">OR</p>
-              <hr className="border-gray-500" />
-            </div>
-            <p className="text-sm mt-4 text-[#002D74]">
-              you can Login with a google account.
-            </p>
-            <button className="bg-white border py-2 w-full rounded-xl mt-5 flex justify-center items-center text-sm hover:scale-105 duration-300 ">
-              <IoLogoGoogleplus />
-              <span className="ml-4">Login with Google</span>
-            </button>
           </div>
           <div className="w-1/2 md:block hidden ">
             <Image
