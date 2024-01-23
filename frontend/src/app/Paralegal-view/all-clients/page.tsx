@@ -1,6 +1,6 @@
 "use client";
+import Navbar from "@/app/components_Paralegal/Navbar(Paralegal)";
 import React, { useState, useEffect } from "react";
-import Navbar from "@/app/components_Partner/Navbar(Partner)";
 import { AiOutlineArrowUp, AiOutlineArrowDown } from "react-icons/ai";
 
 export default function AllClients() {

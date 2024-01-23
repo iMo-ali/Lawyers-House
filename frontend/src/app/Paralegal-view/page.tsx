@@ -16,7 +16,7 @@ export default function ParalegalPage() {
 
       <div className="container mx-auto p-40">
         <h1 className="text-2xl font-bold text-center mb-4">
-          Partner Dashboard
+         Paralegal Dashboard
         </h1>
         <div className="grid grid-cols-98453789754 md:grid-cols-564 gap-45665"></div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

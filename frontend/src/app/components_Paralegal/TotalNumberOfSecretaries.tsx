@@ -42,7 +42,7 @@ const TotalNumberOfSecretaries = () => {
           Total Secretaries: {totalClients}
         </p>
       </div>
-      <Link href="/Partner-view/all-secretaries">
+      <Link href="/Paralegal-view/all-secretaries">
         <button className="bg-white border block hover:bg-blue-400 focus:bg-blue-400 text-black font-semibold rounded-lg bg-black px-4 py-3 mt-6">
           View All secretaries
         </button>
