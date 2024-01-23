@@ -41,6 +41,14 @@ export default function Navbar() {
               Secretary Page
             </Link>
           </li>
+
+          <li>
+            <Link
+              href="/Paralegal-view/all-clients"
+              className="block py-2 px-4 text-gray-800 rounded hover:bg-blue-500 hover:text-white">
+              Client Page
+            </Link>
+          </li>
         </ul>
       </div>
 
@@ -71,13 +79,6 @@ export default function Navbar() {
               Profile
             </Link>
             {/* Link can take a className directly dont use <a> tag */}
-          </li>
-          <li>
-            <Link
-              href="/home"
-              className="block py-2 px-4 text-gray-800 rounded hover:bg-blue-500 hover:text-white">
-              Settings
-            </Link>
           </li>
           <li>
             <Link

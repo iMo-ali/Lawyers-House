@@ -1,110 +1,80 @@
-import Navbar from "../components/Navbar(Paralegal)";
-import React from "react";
+"use client";
+
+import React, { useState, useEffect } from "react";
+import Navbar from "@/app/components_Paralegal/Navbar(Paralegal)";
+import { AiOutlineArrowUp, AiOutlineArrowDown } from "react-icons/ai";
 
 export default function MyCase() {
+    // const authToken = localStorage.getItem("authToken");
+  const [cases, setCases] = useState([]);
+  const [sortCriteria, setSortCriteria] = useState(null);
+  const [sortOrder, setSortOrder] = useState("asc");
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch("http://localhost:8000/secretaries/all", {
+        method: "GET",
+        headers: {
+          // Authorization: `Bearer ${authToken}`,
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setCases(data);
+      } else {
+        console.error("Error fetching data:", response.status);
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error.message);
+    }
+  };
+
+  useEffect(() => {
+  //   fetchData();
+  // }, [authToken]);
+  fetchData();
+  }, []);
+
+  const handleSort = (criteria) => {
+    const newSortOrder =
+      criteria === sortCriteria
+        ? sortOrder === "asc"
+          ? "desc"
+          : "asc"
+        : "asc";
+    setSortCriteria(criteria);
+    setSortOrder(newSortOrder);
+
+    const sortedSecretaries = [...secretaries].sort((a, b) => {
+      if (newSortOrder === "asc") {
+        return a[criteria].localeCompare(b[criteria]);
+      } else {
+        return b[criteria].localeCompare(a[criteria]);
+      }
+    });
+
+    setSecretaries(sortedSecretaries);
+  };
+
   return (
-    <>
-      <section>
-        <Navbar />
-      </section>
-      <section className="dashboard-container">
-        <div className="overflow-x-auto px-9">
-          <table className="table bg-white text-black">
-            {/* head */}
-            <thead className="text-black text-xl text-center capitalize">
-              <tr>
-                <th></th>
-                <th>Case name</th>
-                <th>client name</th>
-                <th>date started</th>
-                <th>case status</th>
+    <section className="dashboard-container">
+      <div className="overflow-x-auto px-9">
+        <table className="table bg-white text-black">
+          {/* Table structure */}
+          {/* ... */}
+          <tbody>
+            {cases.map((caseItem, index) => (
+              <tr key={index}>
+                {/* Table cells */}
+                {/* ... */}
               </tr>
-            </thead>
-            <tbody>
-              {/* 1st row */}
-              <tr className="transition ease-in-out delay-60 hover:bg-indigo-500 duration-300">
-                <th>1</th>
-                <td>
-                  This is a test until understanding how to import the data
-                </td>
-                <td>
-                  This is a test until understanding how to import the data
-                </td>
-                <td>
-                  This is a test until understanding how to import the data
-                </td>
-                <td>
-                  This is a test until understanding how to import the data
-                </td>
-              </tr>
-              {/* 2nd row */}
-              <tr className="transition ease-in-out delay-60 hover:bg-indigo-500 duration-300">
-                <th>2</th>
-                <td>
-                  This is a test until understanding how to import the data
-                </td>
-                <td>
-                  This is a test until understanding how to import the data
-                </td>
-                <td>
-                  This is a test until understanding how to import the data
-                </td>
-                <td>
-                  This is a test until understanding how to import the data
-                </td>
-              </tr>
-              {/* 3rd row */}
-              <tr className="transition ease-in-out delay-60 hover:bg-indigo-500 duration-300">
-                <th>3</th>
-                <td>
-                  This is a test until understanding how to import the data
-                </td>
-                <td>
-                  This is a test until understanding how to import the data
-                </td>
-                <td>
-                  This is a test until understanding how to import the data
-                </td>
-                <td>
-                  This is a test until understanding how to import the data
-                </td>
-              </tr>
-              {/* 4th row */}
-              <tr className="transition ease-in-out delay-60 hover:bg-indigo-500 duration-300">
-                <th>4</th>
-                <td>
-                  This is a test until understanding how to import the data
-                </td>
-                <td>
-                  This is a test until understanding how to import the data
-                </td>
-                <td>
-                  This is a test until understanding how to import the data
-                </td>
-                <td>
-                  This is a test until understanding how to import the data
-                </td>
-              </tr>
-              {/* 5th row */}
-              <tr className="transition ease-in-out delay-60 hover:bg-indigo-500 duration-300">
-                <th>5</th>
-                <td>
-                  This is a test until understanding how to import the data
-                </td>
-                <td>
-                  This is a test until understanding how to import the data
-                </td>
-                <td>
-                  This is a test until understanding how to import the data
-                </td>
-                <td>
-                  This is a test until understanding how to import the data
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-    </>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
   );
 }
